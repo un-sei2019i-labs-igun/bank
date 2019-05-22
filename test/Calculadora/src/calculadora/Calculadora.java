@@ -17,8 +17,10 @@ public class Calculadora {
     }
     
     /**
+    
      * @param args the command line arguments
      */
+<<<<<<< HEAD
     public static double multiplicacion(double a, double b){
         return a*b;
     }
@@ -29,6 +31,10 @@ public class Calculadora {
             return a/b;
 
         }
+=======
+   public static int resta (int x,int y){
+       return x-y;
+>>>>>>> feature3
     }
     public static void main(String[] args) {
         // TODO code application logic here
