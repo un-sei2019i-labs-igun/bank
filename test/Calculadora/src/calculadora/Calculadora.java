@@ -11,6 +11,11 @@ package calculadora;
  */
 public class Calculadora {
 
+    
+    public static double suma(double n1, double n2){
+        return n1 + n2;
+    }
+    
     /**
      * @param args the command line arguments
      */
