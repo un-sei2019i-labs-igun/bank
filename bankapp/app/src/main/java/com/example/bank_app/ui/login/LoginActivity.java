@@ -9,6 +9,7 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -19,17 +20,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bank_app.R;
+import com.example.bank_app.data.data_access.UserDBHelper;
 import com.example.bank_app.ui.login.LoginViewModel;
 import com.example.bank_app.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private UserDBHelper userDBHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+        userDBHelper = new UserDBHelper(this);
+        Log.i("TEST", userDBHelper.getByUsername("USER1").getUserName());
+
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
