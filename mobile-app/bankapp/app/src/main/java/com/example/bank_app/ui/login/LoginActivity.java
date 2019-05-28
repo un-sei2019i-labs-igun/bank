@@ -46,6 +46,8 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
+        loginButton.setEnabled(true);
 /*
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -117,14 +119,14 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
+                //loadingProgressBar.setVisibility(View.VISIBLE);
                 User userToLog = userDBHelper.getByUsername(usernameEditText.getText().toString());
                 if(userToLog==null){
-                    //Usuario no existe
+                    Log.i("TEST", "EL USUARIO NO EXISTE");
                 }else if (userToLog.getPassword() == passwordEditText.getText().toString()){
-                    //abrir ventana mostrando el usuario
+                    Log.i("TEST", "USER LOGGED: " + userDBHelper.getByUsername("USER1").getUserName());
                 }else{
-                    // Error contraseña incorrecta
+                    Log.i("TEST", "INCORRECT PASSWORD");
                 };
 
                 /* .login(usernameEditText.getText().toString(),
