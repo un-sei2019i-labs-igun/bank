@@ -39,6 +39,8 @@ public class User {
 
             users[i] = new User(userName, password);
         }
+
+        return users;
     }
 
 
