@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         userDBHelper = new UserDBHelper(this);
-        Log.i("TEST", userDBHelper.getByUsername("USER1").getUserName());
+        Log.i("TEST", userDBHelper.getByUsername("USER1").getPassword());
 
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -120,14 +120,15 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //loadingProgressBar.setVisibility(View.VISIBLE);
+
                 User userToLog = userDBHelper.getByUsername(usernameEditText.getText().toString());
                 if(userToLog==null){
                     Log.i("TEST", "EL USUARIO NO EXISTE");
-                }else if (userToLog.getPassword() == passwordEditText.getText().toString()){
+                }else if (passwordEditText.getText().toString().trim().compareTo(userToLog.getPassword()) == 0){
                     Log.i("TEST", "USER LOGGED: " + userDBHelper.getByUsername("USER1").getUserName());
                 }else{
                     Log.i("TEST", "INCORRECT PASSWORD");
-                };
+                }
 
                 /* .login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());*/
