@@ -20,6 +20,11 @@ public class User {
         return userName;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+
     public ContentValues toContentValues(){
         ContentValues values = new ContentValues();
         values.put(UserContract.UserEntry.USER_NAME , userName);

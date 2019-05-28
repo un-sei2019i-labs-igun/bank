@@ -68,7 +68,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
     public User getByUsername(String userName) {
 
         SQLiteDatabase db = getReadableDatabase();
-        String selection = UserContract.UserEntry.TABLE_NAME + " LIKE ?";
+        String selection = UserContract.UserEntry.USER_NAME + " LIKE ?";
 
         Cursor c = db.query(
                 UserContract.UserEntry.TABLE_NAME,
@@ -88,6 +88,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
             default: return users[0];//throw new InternalDatabaseException("Database has 2 users with same UserName");
         }
     }
+
 
 
     @Override

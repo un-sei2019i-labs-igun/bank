@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.bank_app.R;
 import com.example.bank_app.data.data_access.UserDBHelper;
+import com.example.bank_app.data.model.User;
 import com.example.bank_app.ui.login.LoginViewModel;
 import com.example.bank_app.ui.login.LoginViewModelFactory;
 
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-
+/*
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -111,17 +112,28 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 return false;
             }
-        });
+        }); */
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                User userToLog = userDBHelper.getByUsername(usernameEditText.getText().toString());
+                if(userToLog==null){
+                    //Usuario no existe
+                }else if (userToLog.getPassword() == passwordEditText.getText().toString()){
+                    //abrir ventana mostrando el usuario
+                }else{
+                    // Error contraseña incorrecta
+                };
+
+                /* .login(usernameEditText.getText().toString(),
+                        passwordEditText.getText().toString());*/
             }
         });
     }
+
+
 
     private void updateUiWithUser(LoggedInUserView model) {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
