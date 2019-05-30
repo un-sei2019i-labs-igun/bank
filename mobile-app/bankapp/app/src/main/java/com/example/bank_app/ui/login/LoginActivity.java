@@ -125,7 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(userToLog==null){
                     Log.i("TEST", "EL USUARIO NO EXISTE");
                 }else if (passwordEditText.getText().toString().trim().compareTo(userToLog.getPassword()) == 0){
-                    Log.i("TEST", "USER LOGGED: " + userDBHelper.getByUsername("USER1").getUserName());
+                    Log.i("TEST", "USER LOGGED: " + userDBHelper.getByUsername(userToLog.getUserName()).getUserName());
                 }else{
                     Log.i("TEST", "INCORRECT PASSWORD");
                 }
