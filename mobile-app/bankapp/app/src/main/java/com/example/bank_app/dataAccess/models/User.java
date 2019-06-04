@@ -2,6 +2,9 @@ package com.example.bank_app.dataAccess.models;
 
 import java.util.Date;
 
+@Entity(indexes = {
+
+})
 public class User extends Entity{
 
     private String fullName;
