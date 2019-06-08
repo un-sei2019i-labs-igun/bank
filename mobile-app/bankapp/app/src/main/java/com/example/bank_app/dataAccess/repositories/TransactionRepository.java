@@ -16,7 +16,4 @@ public class TransactionRepository extends Repository{
         return null;
     }
 
-    public Transaction delete(){
-        return null;
-    }
 }

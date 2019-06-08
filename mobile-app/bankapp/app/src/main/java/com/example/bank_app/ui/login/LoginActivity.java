@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.bank_app.R;
 import com.example.bank_app.dataAccess.database.Database;
+import com.example.bank_app.dataAccess.repositories.AccountRepository;
+import com.example.bank_app.dataAccess.repositories.TransactionRepository;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -23,10 +25,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
-
         database = new Database(this);
+
+        //How to instance
+        AccountRepository accountRepository = new AccountRepository(database.getDaoSession().getAccountDao());
+
 
 
 
