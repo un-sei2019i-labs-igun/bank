@@ -1,34 +1,22 @@
 package com.example.bank_app.ui.login;
 
-import android.app.Activity;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bank_app.R;
-import com.example.bank_app.data.data_access.UserDBHelper;
-import com.example.bank_app.data.model.User;
-import com.example.bank_app.ui.login.LoginViewModel;
-import com.example.bank_app.ui.login.LoginViewModelFactory;
+import com.example.bank_app.dataAccess.database.Database;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private LoginViewModel loginViewModel;
-    private UserDBHelper userDBHelper;
+    private Database database;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +24,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        userDBHelper = new UserDBHelper(this);
-        Log.i("TEST", userDBHelper.getByUsername("USER1").getPassword());
 
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
+
+        database = new Database(this);
+
+
 
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
@@ -121,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //loadingProgressBar.setVisibility(View.VISIBLE);
 
-                User userToLog = userDBHelper.getByUsername(usernameEditText.getText().toString());
+                /*User userToLog = userDBHelper.getByUsername(usernameEditText.getText().toString());
                 if(userToLog==null){
                     Log.i("TEST", "EL USUARIO NO EXISTE");
                 }else if (passwordEditText.getText().toString().trim().compareTo(userToLog.getPassword()) == 0){
@@ -136,15 +124,4 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
-
-    private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-    }
-
-    private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
-    }
 }
