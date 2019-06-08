@@ -15,12 +15,13 @@ public class UserRepository extends Repository{
         return user;
     }
 
-    public User getById(){
-        return null;
+    public User getById(long id){
+        return userDao.load(id);
     }
 
-    public User update(){
-        return null;
+    public User update(User user){
+        userDao.update(user);
+        return  user;
     }
 
 }
