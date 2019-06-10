@@ -8,14 +8,11 @@ import com.example.bank_app.dataAccess.models.UserDao;
 
 public class TransactionRepository extends Repository{
 
-
-     TransactionDao transactionDao;
-
+    private TransactionDao transactionDao;
 
     public TransactionRepository(TransactionDao transactionDao){
         this.transactionDao = transactionDao;
     }
-
 
     public Transaction create(Transaction transaction){
        transactionDao.insert(transaction);
@@ -30,5 +27,4 @@ public class TransactionRepository extends Repository{
         transactionDao.update(transaction);
         return transaction;
     }
-
 }

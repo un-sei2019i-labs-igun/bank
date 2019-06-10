@@ -5,7 +5,7 @@ import com.example.bank_app.dataAccess.models.UserDao;
 
 public class UserRepository extends Repository{
 
-    UserDao userDao;
+    private UserDao userDao;
     public UserRepository(UserDao userDao){
         this.userDao = userDao;
     }

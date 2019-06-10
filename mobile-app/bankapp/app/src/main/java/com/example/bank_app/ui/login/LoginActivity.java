@@ -30,9 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         //How to instance
         AccountRepository accountRepository = new AccountRepository(database.getDaoSession().getAccountDao());
 
-
-
-
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
