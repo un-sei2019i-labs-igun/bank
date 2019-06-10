@@ -1,4 +1,4 @@
-package com.example.bank_app.Controlers;
+package com.example.bank_app.businessLogic.controlers;
 
 import com.example.bank_app.dataAccess.models.Account;
 import com.example.bank_app.dataAccess.models.Transaction;
@@ -7,34 +7,34 @@ import com.example.bank_app.dataAccess.repositories.TransactionRepository;
 
 import java.util.Date;
 
-public class TransferMoneyControler {
+public class SendMoneyController {
 
-    public enum TransferMoneyResult{
+    public enum SendMoneyResult{
         NOT_EXIST_SENDER, INSUFICIENT_BALANCE, NOT_EXIST_RECEPTOR, SUCCESS;
     }
 
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
 
-    public TransferMoneyControler(AccountRepository accountRepository,
-                                  TransactionRepository transactionRepository){
+    public SendMoneyController(AccountRepository accountRepository,
+                               TransactionRepository transactionRepository){
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
     }
 
-    public TransferMoneyResult transferMoney(long senderId, long receptorId, double value){
+    public SendMoneyResult transferMoney(long senderId, long receptorId, double value){
 
         // Verify Sender Existance
         Account verifiedSender = accountRepository.getById(senderId);
-        if(verifiedSender == null) return TransferMoneyResult.NOT_EXIST_SENDER;
+        if(verifiedSender == null) return SendMoneyResult.NOT_EXIST_SENDER;
 
         // Verify Balance
         double newSenderBalance = verifiedSender.getBalance() - value;
-        if(newSenderBalance < 0) return TransferMoneyResult.INSUFICIENT_BALANCE;
+        if(newSenderBalance < 0) return SendMoneyResult.INSUFICIENT_BALANCE;
 
         // Verify Receptor Existance
         Account verifiedReceptor = accountRepository.getById(receptorId);
-        if(verifiedReceptor == null) return TransferMoneyResult.NOT_EXIST_RECEPTOR;
+        if(verifiedReceptor == null) return SendMoneyResult.NOT_EXIST_RECEPTOR;
 
         // Transaction Start
         verifiedSender.setBalance(newSenderBalance);
@@ -53,7 +53,7 @@ public class TransferMoneyControler {
         // Save Transaction Object
         transaction = transactionRepository.create(transaction);
 
-        return TransferMoneyResult.SUCCESS;
+        return SendMoneyResult.SUCCESS;
     }
 
 }
