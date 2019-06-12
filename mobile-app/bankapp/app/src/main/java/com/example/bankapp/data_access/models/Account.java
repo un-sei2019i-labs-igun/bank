@@ -1,4 +1,4 @@
-package com.example.bank_app.dataAccess.models;
+package com.example.bankapp.data_access.models;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
@@ -11,8 +11,9 @@ import java.util.List;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.DaoException;
 
-@Entity()
+@Entity
 public class Account {
+
     @Id(autoincrement = true)
     private long nCuenta;
 
@@ -38,12 +39,6 @@ public class Account {
 
     @Generated(hash = 251390918)
     private transient Long user__resolvedKey;
-
-    private Account(double balance){
-        this.balance = balance;
-        senderTransactions = new LinkedList<>();
-        receptorTransactions = new LinkedList<>();
-    }
 
     private Account(){
         this.balance = -1;
@@ -215,11 +210,4 @@ public class Account {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getAccountDao() : null;
     }
-
-    /*public Transaction[] getTransactions() {
-        List<Transaction> transaction = new LinkedList();
-        transaction.addAll(senderTransactions);
-        transaction.addAll(receptorTransactions);
-        return transaction.toArray(new Transaction[transaction.size()]);
-    }*/
 }

@@ -1,4 +1,4 @@
-package com.example.bank_app.presentation.activities;
+package com.example.bankapp.presentation.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
-import com.example.bank_app.R;
+import com.example.bankapp.R;
 
 public class SendMoneyActivity extends AppCompatActivity {
 

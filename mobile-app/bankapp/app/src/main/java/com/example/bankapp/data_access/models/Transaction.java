@@ -1,14 +1,13 @@
-package com.example.bank_app.dataAccess.models;
+package com.example.bankapp.data_access.models;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.NotNull;
 
 import java.util.Date;
-
 import org.greenrobot.greendao.annotation.Generated;
 
-@Entity()
+@Entity
 public class Transaction {
 
     @Id(autoincrement = true)
@@ -25,7 +24,7 @@ public class Transaction {
 
     public Transaction() {
         value = -1;
-        date = new Date(0);
+        date = new Date();
         senderId = -1;
         receptorId = -1;
     }
@@ -33,7 +32,7 @@ public class Transaction {
 
     @Generated(hash = 1420075435)
     public Transaction(long id, double value, @NotNull Date date, long senderId,
-                       long receptorId) {
+            long receptorId) {
         this.id = id;
         this.value = value;
         this.date = date;
@@ -90,5 +89,4 @@ public class Transaction {
     public void setReceptorId(long receptorId) {
         this.receptorId = receptorId;
     }
-
 }

@@ -1,14 +1,13 @@
-package com.example.bank_app.businessLogic.controlers;
+package com.example.bankapp.business_logic.controlers;
 
-import com.example.bank_app.dataAccess.models.Account;
-import com.example.bank_app.dataAccess.models.Transaction;
-import com.example.bank_app.dataAccess.repositories.AccountRepository;
-import com.example.bank_app.dataAccess.repositories.TransactionRepository;
+import com.example.bankapp.data_access.models.Account;
+import com.example.bankapp.data_access.models.Transaction;
+import com.example.bankapp.data_access.repositories.AccountRepository;
+import com.example.bankapp.data_access.repositories.TransactionRepository;
 
 import java.util.Date;
 
 public class SendMoneyController {
-
     public enum SendMoneyResult{
         NOT_EXIST_SENDER, INSUFICIENT_BALANCE, NOT_EXIST_RECEPTOR, SUCCESS;
     }
@@ -55,5 +54,4 @@ public class SendMoneyController {
 
         return SendMoneyResult.SUCCESS;
     }
-
 }
